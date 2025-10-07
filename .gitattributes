@@ -1,0 +1,65 @@
+# Set default behavior to automatically normalize line endings
+* text=auto
+
+# Go source files
+*.go text eol=lf
+
+# Shell scripts
+*.sh text eol=lf
+
+# Markdown files
+*.md text eol=lf
+
+# YAML files
+*.yml text eol=lf
+*.yaml text eol=lf
+
+# JSON files
+*.json text eol=lf
+
+# Configuration files
+*.toml text eol=lf
+*.ini text eol=lf
+Makefile text eol=lf
+Dockerfile text eol=lf
+
+# Documentation
+*.txt text eol=lf
+*.rst text eol=lf
+LICENSE text eol=lf
+CHANGELOG* text eol=lf
+README* text eol=lf
+CONTRIBUTING* text eol=lf
+
+# Binary files
+*.exe binary
+*.dll binary
+*.so binary
+*.dylib binary
+*.tar.gz binary
+*.zip binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+
+# Go module files
+go.mod text eol=lf
+go.sum text eol=lf
+
+# GitHub specific
+.gitignore text eol=lf
+.gitattributes text eol=lf
+
+# CI/CD files
+.github/**/*.yml text eol=lf
+.github/**/*.yaml text eol=lf
+
+# Export ignore (files not included in git archive)
+.gitignore export-ignore
+.gitattributes export-ignore
+.github/ export-ignore
+*.md export-ignore
+Makefile export-ignore
