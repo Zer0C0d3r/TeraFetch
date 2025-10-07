@@ -143,7 +143,7 @@ make cross-compile
 
 | Component | Requirement |
 |-----------|-------------|
-| **Operating System** | Linux (kernel 6.0+), macOS (14.0+), Windows (11+), FreeBSD (14+) |
+| **Operating System** | Linux (kernel 6.0+), macOS (14.0+), Windows (10+), FreeBSD (14+) |
 | **Architecture** | x86_64 (amd64), ARM64 |
 | **RAM** | 64MB available memory |
 | **Storage** | 10MB for binary + download space |
