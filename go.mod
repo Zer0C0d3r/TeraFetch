@@ -5,7 +5,7 @@ go 1.24.0
 require (
 	github.com/cheggaaa/pb/v3 v3.1.7
 	github.com/spf13/cobra v1.10.1
-	golang.org/x/net v0.44.0
+	golang.org/x/net v0.45.0
 )
 
 require (
