@@ -20,7 +20,7 @@ We take the security of TeraFetch seriously. If you believe you have found a sec
 Instead, please report them via email to: [security@terafetch.dev](mailto:security@terafetch.dev)
 
 If you prefer, you can also create a private security advisory on GitHub:
-1. Go to the [Security tab](https://github.com/your-username/terafetch/security)
+1. Go to the [Security tab](https://github.com/Zer0C0d3r/terafetch/security)
 2. Click "Report a vulnerability"
 3. Fill out the form with details
 
@@ -119,7 +119,7 @@ TeraFetch implements several security measures:
 
 For security-related questions or concerns, please contact:
 - Email: [security@terafetch.dev](mailto:security@terafetch.dev)
-- GitHub Security Advisories: [Security tab](https://github.com/your-username/terafetch/security)
+- GitHub Security Advisories: [Security tab](https://github.com/Zer0C0d3r/terafetch/security)
 
 ## Acknowledgments
 

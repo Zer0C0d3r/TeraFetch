@@ -288,19 +288,52 @@ func TestFileIntegrityVerification(t *testing.T) {
 	}
 }
 
+// testState holds thread-safe state for test HTTP handlers
+type testState struct {
+	mu            sync.Mutex
+	requestCount  int
+	rangeRequests []string
+}
+
+func (ts *testState) incrementCount() {
+	ts.mu.Lock()
+	defer ts.mu.Unlock()
+	ts.requestCount++
+}
+
+func (ts *testState) addRangeRequest(rangeHeader string) {
+	ts.mu.Lock()
+	defer ts.mu.Unlock()
+	ts.rangeRequests = append(ts.rangeRequests, rangeHeader)
+}
+
+func (ts *testState) getCount() int {
+	ts.mu.Lock()
+	defer ts.mu.Unlock()
+	return ts.requestCount
+}
+
+func (ts *testState) getRangeRequests() []string {
+	ts.mu.Lock()
+	defer ts.mu.Unlock()
+	// Return a copy to avoid race conditions
+	result := make([]string, len(ts.rangeRequests))
+	copy(result, ts.rangeRequests)
+	return result
+}
+
 // TestCompleteDownloadWorkflow tests end-to-end download process with mock Terabox responses
 func TestCompleteDownloadWorkflow(t *testing.T) {
 	// Create test data that's large enough to trigger multi-threading
 	testData := strings.Repeat("TeraFetch Integration Test Data! ", 100000) // ~3.2MB
 	expectedSize := int64(len(testData))
 
-	// Track request count and ranges for verification
-	var requestCount int
-	var rangeRequests []string
+	// Track request count and ranges for verification (thread-safe)
+	state := &testState{}
 
 	// Create mock Terabox server
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		requestCount++
+		state.incrementCount()
 		
 		// Simulate Terabox headers
 		w.Header().Set("Server", "TeraBox")
@@ -308,7 +341,7 @@ func TestCompleteDownloadWorkflow(t *testing.T) {
 		
 		rangeHeader := r.Header.Get("Range")
 		if rangeHeader != "" {
-			rangeRequests = append(rangeRequests, rangeHeader)
+			state.addRangeRequest(rangeHeader)
 			
 			// Parse range header (simplified for test)
 			var start, end int64
@@ -410,6 +443,7 @@ func TestCompleteDownloadWorkflow(t *testing.T) {
 	})
 
 	t.Run("verify_multi_threaded_requests", func(t *testing.T) {
+		rangeRequests := state.getRangeRequests()
 		if len(rangeRequests) < 2 {
 			t.Fatalf("Expected multiple range requests for multi-threaded download, got %d", len(rangeRequests))
 		}
@@ -441,7 +475,7 @@ func TestCompleteDownloadWorkflow(t *testing.T) {
 		}
 	})
 
-	t.Logf("Download completed in %v with %d HTTP requests", downloadDuration, requestCount)
+	t.Logf("Download completed in %v with %d HTTP requests", downloadDuration, state.getCount())
 }
 
 // TestDownloadResumeWorkflow tests comprehensive resume functionality and crash recovery
