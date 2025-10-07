@@ -11,6 +11,13 @@ import (
 	"time"
 )
 
+// sanitizeForLog ensures user input for log entries cannot inject new log lines
+func sanitizeForLog(s string) string {
+	s = strings.ReplaceAll(s, "\n", "")
+	s = strings.ReplaceAll(s, "\r", "")
+	return s
+}
+
 // LogLevel represents different logging levels
 type LogLevel int
 
@@ -249,7 +256,12 @@ func (sl *SecureLogger) LogHTTPRequest(req *http.Request) {
 		if sl.isSensitiveHeader(name) {
 			sanitizedHeaders[name] = "[REDACTED]"
 		} else {
-			sanitizedHeaders[name] = strings.Join(values, ", ")
+			// Sanitize each header value before joining
+			sanitizedValues := make([]string, len(values))
+			for i, v := range values {
+				sanitizedValues[i] = sanitizeForLog(v)
+			}
+			sanitizedHeaders[name] = strings.Join(sanitizedValues, ", ")
 		}
 	}
 	
@@ -271,7 +283,12 @@ func (sl *SecureLogger) LogHTTPResponse(resp *http.Response) {
 		if sl.isSensitiveHeader(name) {
 			sanitizedHeaders[name] = "[REDACTED]"
 		} else {
-			sanitizedHeaders[name] = strings.Join(values, ", ")
+			// Sanitize each header value before joining
+			sanitizedValues := make([]string, len(values))
+			for i, v := range values {
+				sanitizedValues[i] = sanitizeForLog(v)
+			}
+			sanitizedHeaders[name] = strings.Join(sanitizedValues, ", ")
 		}
 	}
 	
