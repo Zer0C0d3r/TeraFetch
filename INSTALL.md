@@ -76,7 +76,7 @@ terafetch --version
 ### Method 2: Build from Source
 
 #### Prerequisites
-- Go 1.25 or later
+- Go 1.24 or later
 - Git
 - Make (optional, for using Makefile)
 
@@ -91,8 +91,8 @@ sudo pacman -S go
 sudo apt update
 sudo apt install golang-go
 # Or install latest from official source
-wget https://go.dev/dl/go1.25.1.linux-amd64.tar.gz
-sudo tar -C /usr/local -xzf go1.25.1.linux-amd64.tar.gz
+wget https://go.dev/dl/go1.24.4.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf go1.24.4.linux-amd64.tar.gz
 export PATH=$PATH:/usr/local/go/bin
 ```
 

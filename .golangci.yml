@@ -5,7 +5,8 @@ run:
   modules-download-mode: readonly
 
 output:
-  format: colored-line-number
+  formats:
+    - format: colored-line-number
   print-issued-lines: true
   print-linter-name: true
 
@@ -15,7 +16,6 @@ linters-settings:
     check-blank: true
   
   govet:
-    check-shadowing: true
     enable-all: true
   
   gocyclo:
@@ -54,7 +54,6 @@ linters-settings:
 linters:
   enable:
     - bodyclose
-    - deadcode
     - depguard
     - dogsled
     - dupl
@@ -81,18 +80,20 @@ linters:
     - nolintlint
     - rowserrcheck
     - staticcheck
-    - structcheck
     - stylecheck
     - typecheck
     - unconvert
     - unparam
     - unused
-    - varcheck
     - whitespace
+    - shadow
 
   disable:
     - maligned
     - prealloc
+    - deadcode
+    - structcheck
+    - varcheck
 
 issues:
   exclude-rules:

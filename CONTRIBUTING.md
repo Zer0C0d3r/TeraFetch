@@ -29,7 +29,7 @@ Thank you for your interest in contributing to TeraFetch! This guide will help y
 ## 🛠 Development Setup
 
 ### Prerequisites
-- Go 1.25+
+- Go 1.24+
 - Git
 - Make (optional)
 

@@ -1,6 +1,6 @@
 module terafetch
 
-go 1.25
+go 1.24.0
 
 require (
 	github.com/cheggaaa/pb/v3 v3.1.4

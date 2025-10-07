@@ -24,7 +24,7 @@ First stable release of TeraFetch - a CLI tool for downloading files from Terabo
 
 ### 🛠 Technical
 
-- Go 1.25+ with modular architecture
+- Go 1.24+ with modular architecture
 - Comprehensive test suite with CI/CD pipeline
 - Security scanning with CodeQL
 - Cross-platform build automation
