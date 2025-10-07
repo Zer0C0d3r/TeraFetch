@@ -198,8 +198,8 @@ You can also set cookies via environment variable:
 ```bash
 export TERABOX_COOKIES="/path/to/cookies.txt"
 terafetch https://terabox.com/s/1AbC123DefG456
-```## Conf
-iguration
+```
+## Configuration
 
 ### Rate Limiting
 
