@@ -78,12 +78,16 @@ func (f *FileOperations) ValidatePartialFile(partPath string, expectedSize int64
 }
 
 // CreatePartialFile creates or truncates a partial download file
-func (f *FileOperations) CreatePartialFile(partPath string, size int64) error {
+func (f *FileOperations) CreatePartialFile(partPath string, size int64) (err error) {
 	file, err := os.OpenFile(partPath, os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0644)
 	if err != nil {
 		return fmt.Errorf("failed to create partial file: %w", err)
 	}
-	defer file.Close()
+	defer func() {
+		if cerr := file.Close(); err == nil && cerr != nil {
+			err = cerr
+		}
+	}()
 	
 	// Pre-allocate file space
 	if err := file.Truncate(size); err != nil {
