@@ -1,10 +1,10 @@
 # TeraFetch
 
-[![CI](https://github.com/Zer0C0d3r/terafetch/workflows/CI/badge.svg)](https://github.com/Zer0C0d3r/terafetch/actions/workflows/ci.yml)
-[![CodeQL](https://github.com/Zer0C0d3r/terafetch/workflows/CodeQL/badge.svg)](https://github.com/Zer0C0d3r/terafetch/actions/workflows/codeql.yml)
-[![Go Report Card](https://goreportcard.com/badge/github.com/Zer0C0d3r/terafetch)](https://goreportcard.com/report/github.com/Zer0C0d3r/terafetch)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Release](https://img.shields.io/github/release/Zer0C0d3r/terafetch.svg)](https://github.com/Zer0C0d3r/terafetch/releases/latest)
+[![CI](https://img.shields.io/github/actions/workflow/status/Zer0C0d3r/terafetch/ci.yml?label=CI&logo=github-actions&logoColor=white&style=flat-square&color=4caf50)](https://github.com/Zer0C0d3r/terafetch/actions/workflows/ci.yml)
+[![CodeQL](https://img.shields.io/github/actions/workflow/status/Zer0C0d3r/terafetch/codeql.yml?label=CodeQL&logo=github&logoColor=white&style=flat-square&color=9c27b0)](https://github.com/Zer0C0d3r/terafetch/actions/workflows/codeql.yml)
+[![Go Report](https://img.shields.io/badge/Go_Report-A%2B-success?logo=go&logoColor=white&style=flat-square&color=00bfa5)](https://goreportcard.com/report/github.com/Zer0C0d3r/terafetch)
+[![License](https://img.shields.io/badge/License-MIT-ff4081?logo=opensourceinitiative&logoColor=white&style=flat-square)](https://opensource.org/licenses/MIT)
+[![Release](https://img.shields.io/github/v/release/Zer0C0d3r/terafetch?logo=github&logoColor=white&style=flat-square&color=29b6f6)](https://github.com/Zer0C0d3r/terafetch/releases/latest)
 
 A production-grade CLI tool for downloading files from Terabox with advanced features including multi-threaded downloads, authentication bypass, and comprehensive domain support.
 
